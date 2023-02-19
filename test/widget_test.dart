@@ -10,22 +10,20 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:thornblazer/src/sample_feature/sample_item_list_view.dart';
 
 void main() {
   group('MyWidget', () {
     testWidgets('should display a string of text', (WidgetTester tester) async {
       // Define a Widget
-      const myWidget = MaterialApp(
-        home: Scaffold(
-          body: Text('Hello'),
-        ),
-      );
+      Widget testHarnessWidget = const MaterialApp(home: SampleItemListView());
 
       // Build myWidget and trigger a frame.
-      await tester.pumpWidget(myWidget);
+      await tester.pumpWidget(testHarnessWidget);
 
       // Verify myWidget shows some text
-      expect(find.byType(Text), findsOneWidget);
+      // find.byType(Text).evaluate().forEach((e) => debugPrint(e.toString()));
+      expect(find.byType(Text), findsNWidgets(4)); // 3 list items and 1 title
     });
   });
 }

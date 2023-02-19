@@ -49,7 +49,7 @@ class SampleItemListView extends StatelessWidget {
           final item = items[index];
 
           return ListTile(
-            title: Text('SampleItem ${item.id}'),
+            title: Text('My Best SampleItem ${item.id}'),
             leading: const CircleAvatar(
               // Display the Flutter Logo image asset.
               foregroundImage: AssetImage('assets/images/flutter_logo.png'),
@@ -61,6 +61,7 @@ class SampleItemListView extends StatelessWidget {
               Navigator.restorablePushNamed(
                 context,
                 SampleItemDetailsView.routeName,
+                arguments: {'itemNumber': item.id}
               );
             }
           );
